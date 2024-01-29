@@ -33,11 +33,41 @@
   보강하는 시간을 가졌습니다.
 - 1월 18일 ~ 24일 : 각 팀원들의 개발 코드를 하나로 병합하고 AMAZON AWS등을 이용해 배포하였으며, 24일날 발표하는 시간을 가졌습니다.
 
-각  링크 첨부  :  <a href="https://docs.google.com/spreadsheets/d/1L4wACPQCKQ7hr-v-saBtJC0c9OAXE6tAE3GvGZy0RnM/edit#gid=461303735">테이블정의서 및 요구사항 정의서</a>, <a href="https://www.notion.so/codestates/ERD-9ddb92199daa4eeba3cce358ac02ff0b?pvs=4#a190b11eac2b41d488c3e078a91b4215">ERD다이어그램</a>, <a href="https://postfiles.pstatic.net/MjAyNDAxMjlfMjM1/MDAxNzA2NTExMTY2OTUz.l9V_PPpOyTqpu3KW46IobuVZyPtDETODKBf7r_RK6HEg.x54AkaE02DEwu_1P4reS3d5mQpvwRSXsflhY4pDr2F4g.JPEG.parallel45/%EC%BA%A1%EC%B2%98.JPG?type=w773">API명세서</a>
+각  링크 첨부  :  <a href="https://docs.google.com/spreadsheets/d/1L4wACPQCKQ7hr-v-saBtJC0c9OAXE6tAE3GvGZy0RnM/edit#gid=461303735">테이블정의서 및 요구사항 정의서</a>, <a href="https://www.notion.so/codestates/ERD-9ddb92199daa4eeba3cce358ac02ff0b?pvs=4#a190b11eac2b41d488c3e078a91b4215">ERD다이어그램</a>, <a href="https://www.notion.so/codestates/API-bb14e1c350b347f6afcaca266ca21112">API명세서</a>
 <br />
 
+# 📒  프로젝트 세부 과정
+
+- 기본 코드 작성 ) RESTful 방식으로 검색, 생성, 조회, 삭제등의 코드를 작성하였습니다.<br />
+  코드가 실제로 작동하는지 확인하기 위해 H2콘솔에서 mysql로 데이터베이스를 변경하였으나, 구동에 실패하였습니다. <br />
+  구동에 실패한 이유는 사전에 mysql이 intelliJ와 제대로 연동되어 있지 않았기 때문이었고, 이에 application.yaml에 mysql 관련 정보를 입력하니 mysql에
+  데이터테이블이 생성되고  postman을 통해서 관련정보를 입력시 입력한 정보들이 제대로 mysqlDB에 저장됨을 확인하였습니다. <br />
 
   
+- 단위테스트 및 오류수정) 각 기능 코드들을 완성 할때마다 테스트를 실시하였기 때문에 단위테스트를 실시 할 때 크게 오류 점을 발견하지는 못하였습니다.<br /> 그러나 밴드 고유번호로 조회할때와
+  학교명으로 검색시 초등학교의 경우는 6학년까지 존재한다는 점, 중고등학교는 3학년까지만 존재한다는 점등 학교에 따른 학년의 입력범위를 제한할 필요가 있는등의 개선점등이 파악되어
+  이를 수정하였습니다.<br />
+
+- 통합 코드 수정) 각 백엔드팀원들의 코드를 병합한 후, 발견되는 오류들을 수정하였고, 오류 발생 부분에 대해서는 콘솔에 오류관련 문구를 보고 찾아가 수정하였습니다.<br /> 대다수의 오류는 병합 전 표기법에 대해 지적받아 이 부분을 모두 카멜표기법에 맞추게 되었는데 모든 코드를 수정하지 않아 발생하는 것들이 많았고, 엔티티매핑에 관련한 오류들도 약간 있었으나 구글검색을 참고하여 수정하였습니다.<br />
+
+
+- API 명세서 수정) 완성된 코드에 맞게 API명세서를 일부 수정하였습니다.
+
+
+# 📒  프로젝트 결과
+https://www.notion.so/codestates/5554f8b3326d4f16ad77c5339b1432cd?pvs=4#cbdf2f2af7fd403ca367524da9025b67
+https://www.notion.so/codestates/5554f8b3326d4f16ad77c5339b1432cd?pvs=4#d5d3066417c949e69bda86fa04bc583c
+
+
+# 📒  프로젝트 한계 및 개선방안
+
+한계
+- 처음 반 관련 기능을 맡을 때 생성, 조회, 삭제, 수정, 가입 총 5가지 기능을 구현하려고 했으나 프로젝트를 시작하면서 Spring Boot Security의 코드과 jwt토큰에 대한 코드를 개발할 사람을 정하지 않고 후순위로 미뤄두고 시작해 보안관련기능들이 매우 늦게 구현되어 역량부족으로 프로젝트 종료시까지 반 가입에 대해서 구현하지 못한 것이 아쉬움이 남습니다.
+- 충분히 유효성 검사를 실시 했다고 생각했는데 프론트엔드과 결합했을 때 학교명이 공란임에도 불구하고 검색이 되고, 가입이 되거나하는등 오류가 발생하였고 시간관계상 수정하지 못하고 제출했던 점이 아쉽습니다
+  
+개선방안
+- 기능에 대해서 가능한 여러 변수에 대해서 스스로 검토하고 유효성검사를 보다 꼼꼼하게 실시하고 여건이 된다면 타인에게도 검수를 부탁하여 안전성에 만전을 기하고 싶습니다.
+- 보안관련해서 공부량이 부족함을 인정하고 교육수료후에도 보안관련 보충학습 실시하여 스스로 보안코드를 작성하고 응용할 수 있도록 하겠습니다.
 
 
 
